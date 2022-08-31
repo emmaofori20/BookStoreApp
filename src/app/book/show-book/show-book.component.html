@@ -1,0 +1,60 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2"
+data-toggle="modal" data-target="#exampleModal"
+(click)="addClick()" *ngIf="controls == true"
+>
+  Add Book
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="closeClick()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-book [book]= "book" *ngIf="ActivateAddEditCatComp" ></app-add-edit-book>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="
+display: flex;
+grid-gap: 20px;
+flex-wrap: wrap;
+padding-top: 70px;
+">
+  <div style="display: flex;" *ngFor="let item of BookList ">
+          <div >
+              <div class="card " style="align-items:center ; min-width: 50%;">
+              <img style="height:140px; width:200px;" src="../../../assets/book.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="clearfix mb-3">
+                <span class="float-start badge rounded-pill bg-primary">{{item.name}}</span>
+                <span class="float-end price-hp">{{item.price}}&euro;</span>
+              </div>
+              <h5 class="card-title" [title]="item.description" style="width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{item.description}}</h5>
+              <div style="display:flex; grid-gap:10px" *ngIf="controls == true">
+                <div class="text-center my-4"
+                data-toggle="modal" data-target="#exampleModal"
+                data-backdrop="static" data-keyboard="false"
+                >
+                  <button (click)="EditClick(item)" class="btn btn-primary">Edit</button>
+              </div>
+              <div class="text-center my-4">
+                <button (click)="deleteClikc(item)" class="btn btn-warning">Delete </button>
+            </div>
+              </div>
+
+              </div>
+            </div>
+
+         </div>
+  </div>
+
+</div>

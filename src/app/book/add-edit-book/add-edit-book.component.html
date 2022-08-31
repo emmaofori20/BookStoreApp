@@ -1,0 +1,38 @@
+<div class="form-group ">
+  <label class="col-sm cl-form-label" >Book Name</label>
+  <div class="colsm-10">
+    <input type="text" class="form-control" [(ngModel)]="Name" placeholder="Enter Book name">
+  </div>
+  <label class="col-sm cl-form-label" >Book price</label>
+  <div class="colsm-10">
+    <input type="text" class="form-control" [(ngModel)]="Price" placeholder="Enter price">
+  </div>
+  <label class="col-sm cl-form-label" >Book Author</label>
+  <div class="colsm-10">
+    <input type="text" class="form-control" [(ngModel)]="Author" placeholder="Enter Authors' name">
+  </div>
+  <label class="col-sm cl-form-label" >Book Description</label>
+  <div class="colsm-10">
+    <input type="text" class="form-control" [(ngModel)]="Description" placeholder="Description">
+  </div>
+  <label class="col-sm cl-form-label" >Category</label>
+  <div class="colsm-10">
+    <select class="form-control" [(ngModel)]="CategoryId">
+      <option> select</option>
+      <option [value]="catname.categoryId" *ngFor="let catname of categoryList">
+          {{catname.name}}
+      </option>
+
+    </select>
+  </div>
+
+
+</div>
+
+<button (click)="addBook()" *ngIf="book.bookId==0" class="btn btn-primary">
+  Add
+</button>
+
+<button (click)="EditBook()" *ngIf="book.bookId!=0" class="btn btn-primary">
+  Edit
+</button>
